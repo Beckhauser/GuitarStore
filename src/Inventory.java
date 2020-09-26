@@ -26,7 +26,6 @@ public class Inventory {
         List matchingGuitars = new LinkedList();
         for(Iterator i = guitars.iterator(); i.hasNext();){
             Guitar guitar = (Guitar)i.next();
-//            GuitarSpec guitarSpec = guitar.getSpec();
             if(guitar.getSpec().matches(searchSpec)){
                 matchingGuitars.add(guitar);
             }
