@@ -1,35 +1,64 @@
+import Instruments.Guitar;
+import Instruments.Instrument;
+import Instruments.Mandolin;
+import Specs.GuitarSpec;
+import Specs.InstrumentSpec;
+import Specs.MandolinSpec;
+
 import java.util.*;
 
 public class Inventory {
-    private List guitars;
+    private List<Instrument> inventory;
 
     public Inventory(){
-        guitars = new LinkedList();
+        inventory = new LinkedList<Instrument>();
     }
 
-    public void addGuitar(String serialNumber, double price, GuitarSpec spec){
-        Guitar guitar = new Guitar(serialNumber, price, spec);
-        guitars.add(guitar);
+    public void addInstrument(String serialNumber, double price, InstrumentSpec spec) {
+        Instrument instrument = null;
+        if (spec instanceof GuitarSpec) {
+            instrument = new Guitar(serialNumber, price, (GuitarSpec)spec);
+        } else if (spec instanceof MandolinSpec) {
+            instrument = new Mandolin(serialNumber, price, (MandolinSpec)spec);
+        }
+
+        inventory.add(instrument);
     }
 
-    public Guitar getGuitar(String serialNumber){
-        for(Iterator i = guitars.iterator(); i.hasNext();){
-            Guitar guitar = (Guitar)i.next();
-            if(guitar.getSerialNumber().equals(serialNumber)){
-                return guitar;
+    public Instrument getInstrument(String serialNumber) {
+        for (Instrument instrument : this.inventory) {
+            if (instrument.getSerialNumber().equals(serialNumber)) {
+                return instrument;
             }
         }
         return null;
     }
 
-    public List search(GuitarSpec searchSpec){
-        List matchingGuitars = new LinkedList();
-        for(Iterator i = guitars.iterator(); i.hasNext();){
-            Guitar guitar = (Guitar)i.next();
-            if(guitar.getSpec().matches(searchSpec)){
-                matchingGuitars.add(guitar);
+    public List<Guitar> search(GuitarSpec wantedSpec){
+        List<Guitar> foundGuitars = new LinkedList();
+        for (Instrument instrument : this.inventory) {
+            if (instrument instanceof Guitar) {
+                Guitar guitar = (Guitar) instrument;
+                GuitarSpec guitarSpec = (GuitarSpec) guitar.getSpec();
+                if (guitarSpec.matches(wantedSpec)) {
+                    foundGuitars.add(guitar);
+                }
             }
         }
-        return matchingGuitars;
+        return foundGuitars;
+    }
+
+    public List<Mandolin> search(MandolinSpec wantedSpec){
+        List<Mandolin> foundMandolins = new LinkedList();
+        for (Instrument instrument : this.inventory) {
+            if (instrument instanceof Mandolin) {
+                Mandolin mandolin = (Mandolin) instrument;
+                MandolinSpec mandolinSpec = (MandolinSpec) mandolin.getSpec();
+                if (mandolinSpec.matches(wantedSpec)) {
+                    foundMandolins.add(mandolin);
+                }
+            }
+        }
+        return foundMandolins;
     }
 }
