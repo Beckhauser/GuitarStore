@@ -21,7 +21,7 @@ public class FindGuitar {
                         "sua por apenas U$" + guitar.getPrice());
             }
             }else {
-            System.out.println("Desculpe não temos nada para fazer");
+            System.out.println("Desculpe não temos nada para você");
         }
     }
 
