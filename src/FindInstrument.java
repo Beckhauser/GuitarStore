@@ -11,8 +11,8 @@ public class FindInstrument {
         initializeInventory(inventory);
 
         Map properties = new HashMap<>();
-        properties.put("instrumentType", InstrumentType.GUITAR);
-        properties.put("builder", Builder.COLLINGS);
+        properties.put("builder", Builder.GIBSON);
+        properties.put("backWood", Wood.MAPLE);
 
         InstrumentSpec clientSpec = new InstrumentSpec(properties);
 
@@ -54,7 +54,7 @@ public class FindInstrument {
         properties.put("builder", Builder.COLLINGS);
         properties.put("model", "CJ");
         properties.put("type", Type.ACOUSTIC);
-        properties.put("numString", 6);
+        properties.put("numStrings", 6);
         properties.put("topWood", Wood.INDIAN_ROSEWOOD);
         properties.put("backWood", Wood.SITKA);
         inventory.addInstrument("11277", 3999.95, new InstrumentSpec(properties));
@@ -116,34 +116,32 @@ public class FindInstrument {
         properties.put("instrumentType", InstrumentType.MANDOLIN);
         properties.put("builder", Builder.GIBSON);
         properties.put("model", "F5-G");
-        properties.put("numStrings", "");
         properties.put("type", Type.ACOUSTIC);
         properties.put("backWood", Wood.MAPLE);
         properties.put("topWood", Wood.MAPLE);
+        properties.remove("numStrings");
+        properties.put("style", Style.A);
         inventory.addInstrument("9019920", 5495.95, new InstrumentSpec(properties));
-
-
-//      BANJOS
 
         properties.put("instrumentType", InstrumentType.BANJO);
         properties.put("builder", Builder.GIBSON);
         properties.put("model", "RB-3");
-        properties.put("numStrings", 5);
         properties.put("type", Type.ACOUSTIC);
+        properties.put("numStrings", 5);
+        properties.remove("topWood");
         properties.put("backWood", Wood.MAPLE);
-        properties.put("topWood", "");
+        properties.remove("style");
         inventory.addInstrument("8900231", 2945.95, new InstrumentSpec(properties));
 
 
-
         properties.put("instrumentType", InstrumentType.SAXOFONE);
-        properties.put("builder", Builder.GIBSON);
-        properties.put("model", "");
-        properties.put("numStrings", "");
+        properties.put("builder", Builder.EAGLE);
         properties.put("type", Type.ALTO);
-        properties.put("backWood", "");
-        properties.put("topWood", "");
-        inventory.addInstrument("S4598", 3500.65, new InstrumentSpec(properties));
+        properties.put("model", "WSSM35");
+        properties.remove("numStrings");
+        properties.remove("backWood");
+        properties.remove("topWood");
+        inventory.addInstrument("49989027", 2752.45, new InstrumentSpec(properties));
 
     }
 }
