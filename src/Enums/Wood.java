@@ -1,7 +1,7 @@
 package Enums;
 
 public enum Wood {
-    INDIAN_ROSEWOOD, BRAZILIAN_ROSEWOOD, MAHOGANY, MAPLE, COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA;
+    INDIAN_ROSEWOOD, BRAZILIAN_ROSEWOOD, MAHOGANY, MAPLE, COCOBOLO, CEDAR, ADIRONDACK, ALDER, SITKA, SPRUCE;
 
     public String toString(){
         switch (this){
@@ -14,6 +14,7 @@ public enum Wood {
             case ADIRONDACK: return "adirondack";
             case ALDER: return "alder";
             case SITKA: return "sitka";
+            case SPRUCE: return "spruce";
         }
         return null;
     }
